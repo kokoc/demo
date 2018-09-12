@@ -2,7 +2,7 @@
     "name": "kokoc/demo",
     "description": "Demo project",
     "require": {
-        "php": "~7.0.0",
+        "php": "7.*",
         "magento/framework": "101.0.*"
     },
     "type": "magento2-module",

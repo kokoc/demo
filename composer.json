@@ -1,0 +1,22 @@
+{
+    "name": "kokoc/demo",
+    "description": "Demo project",
+    "require": {
+        "php": "~7.0.0",
+        "magento/framework": "101.0.*",
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Kokoc\\Demo\\": ""
+        }
+    }
+}
+

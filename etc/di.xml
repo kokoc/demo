@@ -10,8 +10,17 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="cats-apply" xsi:type="object">Kokoc\Demo\Console\Command\CatsApplyCommand</item>
+                <item name="cats-remove" xsi:type="object">Kokoc\Demo\Console\Command\CatsRemoveCommand</item>
             </argument>
+
         </arguments>
     </type>
+
+    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="is_cat_handler" type="Kokoc\Demo\Plugin\RepositoryHandler" />
+    </type>
+
+
+
     <preference for="Magento\PricePermissions\Observer\ObserverData" type="Kokoc\Demo\Model\PermissionsMock" />
 </config>

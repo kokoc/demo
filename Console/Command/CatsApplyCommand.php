@@ -33,6 +33,7 @@ class CatsApplyCommand extends Command
      * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
      * @param \Magento\Catalog\Api\Data\ProductInterfaceFactory $productInterfaceFactory
      * @param \Magento\Framework\EntityManager\HydratorInterface $hydrator
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function __construct(
         \Kokoc\Demo\Model\Cats\Source $catsSource,
@@ -53,7 +54,6 @@ class CatsApplyCommand extends Command
         parent::__construct();
 
         $this->appState = $appState;
-        $this->appState->setAreaCode('adminhtml');
     }
 
     /**
@@ -69,6 +69,7 @@ class CatsApplyCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->appState->setAreaCode('adminhtml');
         /** @var \Magento\Catalog\Api\Data\CategoryInterface $categoryDto */
         $categoryDto = $this->categoryFactory->create();
         $categoryDto->setName('Cats');
@@ -96,6 +97,7 @@ class CatsApplyCommand extends Command
                         'qty' => $cat['price'],
                         'is_in_stock' => true
                     ],
+                    'is_cat' => true
                 ],
                 'media_gallery_entries' => [[
                     "media_type" => "image",
@@ -126,12 +128,10 @@ class CatsApplyCommand extends Command
             $media->getContent()->setName($cat['price'] . "test.jpg");
             $productDto->setMediaGalleryEntries([$media]);
 
+
             $this->productRepository->save($productDto);
 
             $output->write('.');
         }
-
-
-        //$output->writeln(print_r($this->catSource->getCats(), true));
     }
 }

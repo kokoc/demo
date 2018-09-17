@@ -25,6 +25,7 @@ class RepositoryHandler
 
     public function afterGet(ProductRepositoryInterface $repository, ProductInterface $product)
     {
+
         $value = (bool)(int)$this->catsRepository->get($product->getId());
         $product->getExtensionAttributes()->setIsCat($value);
 

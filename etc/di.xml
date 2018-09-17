@@ -19,7 +19,7 @@
     <type name="Magento\Catalog\Api\ProductRepositoryInterface">
         <plugin name="is_cat_handler" type="Kokoc\Demo\Plugin\RepositoryHandler" />
     </type>
-
+    <preference for="Kokoc\Demo\Api\CatsServiceInterface" type="Kokoc\Demo\Model\CatsService" />
 
 
     <preference for="Magento\PricePermissions\Observer\ObserverData" type="Kokoc\Demo\Model\PermissionsMock" />
